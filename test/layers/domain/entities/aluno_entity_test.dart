@@ -9,7 +9,9 @@ main() {
         dataNascimento: DateTime(1996, 04, 22),
         matricula: 1234567,
         ano: 9,
-        turma: "19BM");
+        turma: "19BM",
+        usuario: "luanferro",
+        senha: "luan2204");
 
     expect(alunoEntity.nome, "Luan");
     expect(alunoEntity.sexo, "masculino");

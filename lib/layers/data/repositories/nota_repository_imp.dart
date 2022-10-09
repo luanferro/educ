@@ -1,22 +1,15 @@
+import 'package:educ/layers/data/datasources/get_notas_datasource.dart';
+import 'package:educ/layers/data/datasources/local/get_notas_datasource_imp.dart';
 import 'package:educ/layers/domain/entities/nota_entity.dart';
 import 'package:educ/layers/domain/repositories/nota_repository.dart';
 
 class NotaRepositoryImp implements NotaRepository {
-  @override
-  Future<bool> inserirNota(NotaEntity notaEntity) {
-    // TODO: implement inserirNota
-    throw UnimplementedError();
-  }
+  final GetNotasDataSource _getNotasDataSource;
+
+  NotaRepositoryImp(this._getNotasDataSource);
 
   @override
-  Future<List<NotaEntity>> getNotas(nomeALuno) {
-    // TODO: implement getNotas
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<bool> removerNota(NotaEntity notaEntity) {
-    // TODO: implement removerNota
-    throw UnimplementedError();
+  Future<List<NotaEntity>> getNotas(String nomeALuno) {
+    return _getNotasDataSource.getNotas(nomeALuno);
   }
 }

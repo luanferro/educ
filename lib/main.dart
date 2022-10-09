@@ -2,27 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'package:educ/layers/presentation/ui/pages/nota_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Bem vindo ao flutter',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Bem vindo ao flutter'),
-        ),
-        body: const Center(
-          child: Text('Ola Mundo'),
-        ),
-      ),
-    );
-  }
+  runApp(NotaPage());
 }
