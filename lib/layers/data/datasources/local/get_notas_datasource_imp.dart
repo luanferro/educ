@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:educ/layers/core/database/database_connection.dart';
 import 'package:educ/layers/core/database/database_connection_imp.dart';
 import 'package:educ/layers/data/datasources/get_notas_datasource.dart';
@@ -17,16 +19,18 @@ class GetNotasDataSourceImp implements GetNotasDataSource {
     try {
       conn = await database.openConnection();
 
-      final result = await conn.query('''   ''');
+      var result = await conn
+          .query('''select * from tb01_aluno where nome= ?''', [nomeAluno]);
 
       if (result.isEmpty) {
         throw Exception();
       }
+      log('debug: $result');
 
       return resultList;
     } on MySqlException catch (e, s) {
-      print(e);
-      print(s);
+      log('$e');
+      log('$s');
       throw Exception();
     } finally {
       await conn?.close();

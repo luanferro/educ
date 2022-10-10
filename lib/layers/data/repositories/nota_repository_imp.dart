@@ -1,5 +1,4 @@
 import 'package:educ/layers/data/datasources/get_notas_datasource.dart';
-import 'package:educ/layers/data/datasources/local/get_notas_datasource_imp.dart';
 import 'package:educ/layers/domain/entities/nota_entity.dart';
 import 'package:educ/layers/domain/repositories/nota_repository.dart';
 

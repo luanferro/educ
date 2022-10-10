@@ -3,9 +3,8 @@ import 'package:educ/layers/data/repositories/nota_repository_imp.dart';
 import 'package:educ/layers/domain/usecases/buscar_notas/buscar_notas_usecase_imp.dart';
 import 'package:educ/layers/presentation/controllers/nota_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
+// ignore: must_be_immutable
 class NotaPage extends StatelessWidget {
   NotaPage({Key? key}) : super(key: key);
 
@@ -16,8 +15,8 @@ class NotaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      padding: EdgeInsets.all(24),
-      child: Text(controller.notas.toString()),
+      padding: const EdgeInsets.all(24),
+      child: Text('teste'),
     ));
   }
 }

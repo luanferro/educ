@@ -8,7 +8,11 @@ class DatabaseConnectionImp implements DatabaseConnection {
   Future<MySqlConnection> openConnection() async {
     return MySqlConnection.connect(
       ConnectionSettings(
-          host: 'localhost', port: 3306, user: 'root', password: '', db: ''),
+          host: '127.0.0.1',
+          port: 3306,
+          user: 'root',
+          password: '',
+          db: 'educ_database'),
     );
   }
 }

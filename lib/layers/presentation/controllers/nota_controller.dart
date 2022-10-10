@@ -1,4 +1,3 @@
-import 'package:educ/layers/domain/entities/nota_entity.dart';
 import 'package:educ/layers/domain/usecases/buscar_notas/buscar_notas_usecase.dart';
 
 class NotaController {
@@ -6,9 +5,7 @@ class NotaController {
 
   NotaController(this._buscarNotasUseCase);
 
-  Future<List<NotaEntity>> notas;
-
   buscarNotasUseCase(String nomeAluno) {
-    notas = _buscarNotasUseCase.buscarNotas(nomeAluno);
+    return _buscarNotasUseCase.buscarNotas(nomeAluno);
   }
 }
