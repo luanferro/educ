@@ -8,7 +8,7 @@ main() {
         sexo: "masculino",
         dataNascimento: DateTime(1996, 04, 22),
         matricula: 1234567,
-        ano: 9,
+        ano: "9",
         turma: "19BM",
         usuario: "luanferro",
         senha: "luan2204");
