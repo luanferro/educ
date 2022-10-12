@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:educ/layers/domain/entities/nota_entity.dart';
 import 'package:educ/layers/domain/usecases/buscar_notas/buscar_notas_usecase.dart';
 
@@ -9,7 +10,8 @@ class BuscarNotasUseCaseImp implements BuscarNotasUseCase {
   BuscarNotasUseCaseImp(this._notaRepository);
 
   @override
-  Future<List<NotaEntity>> buscarNotas(String nomeAluno) async {
-    return await _notaRepository.getNotas(nomeAluno);
+  Future<Either<Exception, List<NotaEntity>>> buscarNotas(
+      String nomeAluno, int bimestre) async {
+    return await _notaRepository.getNotas(nomeAluno, bimestre);
   }
 }

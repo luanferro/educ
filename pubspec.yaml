@@ -38,6 +38,10 @@ dependencies:
   equatable: ^2.0.5
   mysql1: ^0.19.2
   firebase_core: ^1.24.0
+  firebase_auth: ^3.11.2
+  cloud_firestore: ^3.5.1
+  dartz:
+  get_it: 
 
 dev_dependencies:
   flutter_test:
