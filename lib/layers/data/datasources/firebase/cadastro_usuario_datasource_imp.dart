@@ -1,24 +1,26 @@
 import 'package:educ/layers/data/datasources/cadastro_usuario_datasource.dart';
+import 'package:either_dart/either.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class CadastroUsuarioDataSourceImp implements CadastroUsuarioDataSource {
   @override
-  Future cadastrarUsuario(String usuario, String senha) async {
+  Future<Either<Exception, bool>> cadastrarUsuario(
+      String usuario, String senha) async {
     try {
-      final credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: '$usuario@educ.com',
         password: senha,
       );
-      return credential;
+      return const Right(true);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
+        return Left(Exception('senha fraca'));
       } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
+        return Left(Exception('email em uso'));
       }
+      return Left(Exception('Erro inesperado! Tente novamente mais tarde'));
     } catch (e) {
-      print(e);
+      return Left(Exception(e));
     }
   }
 }

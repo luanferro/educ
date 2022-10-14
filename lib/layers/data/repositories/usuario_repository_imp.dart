@@ -1,3 +1,5 @@
+import 'package:either_dart/either.dart';
+import 'package:educ/layers/data/datasources/buscar_usuario_datasource.dart';
 import 'package:educ/layers/domain/repositories/usuario_repository.dart';
 
 import '../datasources/cadastro_usuario_datasource.dart';
@@ -6,16 +8,24 @@ import '../datasources/login_datasource.dart';
 class UsuarioRepositoryImp implements UsuarioRepository {
   final CadastroUsuarioDataSource _cadastroDataSource;
   final LoginDataSource _loginDataSource;
+  final BuscarUsuarioDataSource _buscarUsuarioDataSource;
 
-  UsuarioRepositoryImp(this._cadastroDataSource, this._loginDataSource);
+  UsuarioRepositoryImp(this._cadastroDataSource, this._loginDataSource,
+      this._buscarUsuarioDataSource);
 
   @override
-  Future cadastrarUsuario(String usuario, String senha) {
+  Future<Either<Exception, bool>> cadastrarUsuario(
+      String usuario, String senha) {
     return _cadastroDataSource.cadastrarUsuario(usuario, senha);
   }
 
   @override
-  Future logar(String usuario, String senha) {
+  Future<bool> logar(String usuario, String senha) {
     return _loginDataSource.logar(usuario, senha);
+  }
+
+  @override
+  String buscarUsuarioLogado() {
+    return _buscarUsuarioDataSource.buscarUsuarioLogado();
   }
 }

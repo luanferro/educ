@@ -1,4 +1,8 @@
+import 'package:either_dart/either.dart';
+
 abstract class UsuarioRepository {
-  Future<dynamic> cadastrarUsuario(String usuario, String senha);
-  Future<dynamic> logar(String usuario, String senha);
+  Future<Either<Exception, bool>> cadastrarUsuario(
+      String usuario, String senha);
+  Future<bool> logar(String usuario, String senha);
+  String buscarUsuarioLogado();
 }

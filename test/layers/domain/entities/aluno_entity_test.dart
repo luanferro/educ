@@ -6,7 +6,7 @@ main() {
     AlunoEntity alunoEntity = AlunoEntity(
         nome: "Luan",
         sexo: "masculino",
-        dataNascimento: DateTime(1996, 04, 22),
+        dataNascimento: "22-04-1996",
         matricula: 1234567,
         ano: "9",
         turma: "19BM",

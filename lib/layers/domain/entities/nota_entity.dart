@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class NotaEntity {
-  final double nota;
+  final num nota;
   final String materia;
   final int bimestre;
 

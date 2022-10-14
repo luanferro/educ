@@ -1,16 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AlunoEntity {
-  final String? nome;
-  final String? sexo;
-  final String? dataNascimento;
-  final int? matricula;
-  final String? ano;
-  final String? turma;
-  final String? usuario;
-  final String? senha;
+  String? nome;
+  String? sexo;
+  String? dataNascimento;
+  int? matricula;
+  String? ano;
+  String? turma;
+  String? usuario;
+  String? senha;
 
-  const AlunoEntity(
+  AlunoEntity(
       {this.nome,
       this.sexo,
       this.dataNascimento,

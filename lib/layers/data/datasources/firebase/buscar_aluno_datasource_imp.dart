@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dartz/dartz.dart';
 import 'package:educ/layers/data/datasources/buscar_aluno_datasource.dart';
 import 'package:educ/layers/domain/entities/aluno_entity.dart';
+import 'package:either_dart/either.dart';
 
 class BuscarAlunoDataSourceImp implements BuscarAlunoDataSource {
   var db = FirebaseFirestore.instance;
@@ -19,11 +19,11 @@ class BuscarAlunoDataSourceImp implements BuscarAlunoDataSource {
       if (aluno != null) {
         return Right(aluno);
       } else {
-        return Left(Exception('Nenhum aluno encontrado'));
         print("No such document.");
+        return Left(Exception('Nenhum aluno encontrado'));
       }
     } catch (e) {
-      return left(Exception(e));
+      return Left(Exception(e));
     }
   }
 }

@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.luanferro.educ">
    <application
+        android:requestLegacyExternalStorage="true"
         android:label="educ"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

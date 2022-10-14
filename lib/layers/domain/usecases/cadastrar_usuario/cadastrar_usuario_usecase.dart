@@ -1,3 +1,6 @@
+import 'package:either_dart/either.dart';
+
 abstract class CadastrarUsuarioUseCase {
-  dynamic cadastrarUsuario(String usuario, String senha);
+  Future<Either<Exception, bool>> cadastrarUsuario(
+      String usuario, String senha);
 }
