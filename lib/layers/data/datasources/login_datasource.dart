@@ -1,5 +1,6 @@
 import 'package:either_dart/either.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class LoginDataSource {
-  Future<bool> logar(String usuario, String senha);
+  Future<Either<Exception, UserCredential>> logar(String usuario, String senha);
 }

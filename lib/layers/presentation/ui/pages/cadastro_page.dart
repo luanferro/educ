@@ -26,21 +26,22 @@ class _CadastroPageState extends State<CadastroPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
-        margin: EdgeInsets.only(top: 40),
+        margin: const EdgeInsets.only(top: 40),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               Container(
                 alignment: Alignment.topLeft,
-                margin: EdgeInsets.only(left: 5),
+                margin: const EdgeInsets.only(left: 5),
                 child: IconButton(
                     alignment: Alignment.topLeft,
                     onPressed: (() => Navigator.pop(
                           context,
-                          MaterialPageRoute(builder: (context) => LoginPage()),
+                          MaterialPageRoute(
+                              builder: (context) => const LoginPage()),
                         )),
-                    icon: Icon(Icons.arrow_back_ios_new)),
+                    icon: const Icon(Icons.arrow_back_ios_new)),
               ),
               const SizedBox(
                 height: 30,
@@ -50,158 +51,97 @@ class _CadastroPageState extends State<CadastroPage> {
                 Text(
                   "REGISTRE-SE",
                   style: TextStyle(
-                      fontSize: 23,
+                      fontSize: 30,
                       color: Colors.deepPurpleAccent,
                       fontWeight: FontWeight.bold),
                 ),
               ]),
               const SizedBox(
-                height: 40,
+                height: 80,
               ),
-              Container(
-                width: 309,
-                height: 55,
-                decoration: BoxDecoration(
-                    color: Colors.grey[100],
-                    border: Border.all(color: Colors.white),
-                    borderRadius: BorderRadius.circular(35)),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 20.0),
-                  child: TextField(
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Nome Completo",
-                        hintStyle:
-                            TextStyle(fontSize: 17, color: Colors.grey[400]),
-                        labelStyle: TextStyle(color: Colors.black),
-                      ),
-                      onChanged: (value) => alunoEntity.nome = value),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 45),
-                child: Row(
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: 173,
+                      width: 350,
                       height: 55,
-                      margin: const EdgeInsets.only(top: 10),
                       decoration: BoxDecoration(
                           color: Colors.grey[100],
                           border: Border.all(color: Colors.white),
                           borderRadius: BorderRadius.circular(35)),
                       child: Padding(
-                        padding: EdgeInsets.only(left: 20.0),
-                        child: TextField(
-                            inputFormatters: [maskFormatter],
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "Data Nascimento",
-                              hintStyle: TextStyle(
-                                  fontSize: 17, color: Colors.grey[400]),
-                              labelStyle: TextStyle(color: Colors.black),
-                            ),
-                            onChanged: (value) => alunoEntity.dataNascimento =
-                                maskFormatter.getMaskedText()),
-                      ),
-                    ),
-                    Padding(padding: EdgeInsets.only(left: 10)),
-                    Container(
-                      width: 121,
-                      height: 55,
-                      margin: const EdgeInsets.only(top: 10),
-                      decoration: BoxDecoration(
-                          color: Colors.grey[100],
-                          border: Border.all(color: Colors.white),
-                          borderRadius: BorderRadius.circular(35)),
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 20.0),
+                        padding: const EdgeInsets.only(left: 20.0),
                         child: TextField(
                             decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText: "Sexo",
+                              hintText: "Nome Completo",
                               hintStyle: TextStyle(
                                   fontSize: 17, color: Colors.grey[400]),
-                              labelStyle: TextStyle(color: Colors.black),
+                              labelStyle: const TextStyle(color: Colors.black),
                             ),
-                            onChanged: (value) => alunoEntity.sexo = value),
+                            onChanged: (value) => alunoEntity.nome = value),
                       ),
                     ),
-                  ],
-                ),
-              ),
-              Container(
-                width: 309,
-                height: 55,
-                margin: const EdgeInsets.only(top: 10),
-                decoration: BoxDecoration(
-                    color: Colors.grey[100],
-                    border: Border.all(color: Colors.white),
-                    borderRadius: BorderRadius.circular(35)),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 20.0),
-                  child: TextField(
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Matricula",
-                        hintStyle:
-                            TextStyle(fontSize: 17, color: Colors.grey[400]),
-                        labelStyle: TextStyle(color: Colors.black),
-                      ),
-                      onChanged: (value) =>
-                          alunoEntity.matricula = int.tryParse(value)),
-                ),
-              ),
-              Container(
-                width: 309,
-                height: 55,
-                margin: const EdgeInsets.only(top: 10),
-                decoration: BoxDecoration(
-                    color: Colors.grey[100],
-                    border: Border.all(color: Colors.white),
-                    borderRadius: BorderRadius.circular(35)),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 20.0),
-                  child: TextField(
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Usuario",
-                        hintStyle:
-                            TextStyle(fontSize: 17, color: Colors.grey[400]),
-                        labelStyle: TextStyle(color: Colors.black),
-                      ),
-                      onChanged: (value) => alunoEntity.usuario = value),
-                ),
-              ),
-              Container(
-                width: 309,
-                height: 55,
-                margin: const EdgeInsets.only(top: 10),
-                decoration: BoxDecoration(
-                    color: Colors.grey[100],
-                    border: Border.all(color: Colors.white),
-                    borderRadius: BorderRadius.circular(35)),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 20.0),
-                  child: TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Senha",
-                        hintStyle:
-                            TextStyle(fontSize: 17, color: Colors.grey[400]),
-                        labelStyle: TextStyle(color: Colors.black),
-                      ),
-                      onChanged: (value) => alunoEntity.senha = value),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 45),
-                child: Row(
-                  children: [
                     Container(
-                      width: 128,
+                      margin: const EdgeInsets.only(left: 45),
+                      child: Row(
+                        children: [
+                          const Padding(padding: EdgeInsets.only(left: 5)),
+                          Container(
+                            width: 173,
+                            height: 55,
+                            margin: const EdgeInsets.only(top: 10),
+                            decoration: BoxDecoration(
+                                color: Colors.grey[100],
+                                border: Border.all(color: Colors.white),
+                                borderRadius: BorderRadius.circular(35)),
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 20.0),
+                              child: TextField(
+                                  inputFormatters: [maskFormatter],
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: "Data Nascimento",
+                                    hintStyle: TextStyle(
+                                        fontSize: 17, color: Colors.grey[400]),
+                                    labelStyle:
+                                        const TextStyle(color: Colors.black),
+                                  ),
+                                  onChanged: (value) =>
+                                      alunoEntity.dataNascimento =
+                                          maskFormatter.getMaskedText()),
+                            ),
+                          ),
+                          const Padding(padding: EdgeInsets.only(left: 10)),
+                          Container(
+                            width: 165,
+                            height: 55,
+                            margin: const EdgeInsets.only(top: 10),
+                            decoration: BoxDecoration(
+                                color: Colors.grey[100],
+                                border: Border.all(color: Colors.white),
+                                borderRadius: BorderRadius.circular(35)),
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 20.0),
+                              child: TextField(
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: "Sexo",
+                                    hintStyle: TextStyle(
+                                        fontSize: 17, color: Colors.grey[400]),
+                                    labelStyle:
+                                        const TextStyle(color: Colors.black),
+                                  ),
+                                  onChanged: (value) =>
+                                      alunoEntity.sexo = value),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 350,
                       height: 55,
                       margin: const EdgeInsets.only(top: 10),
                       decoration: BoxDecoration(
@@ -209,22 +149,22 @@ class _CadastroPageState extends State<CadastroPage> {
                           border: Border.all(color: Colors.white),
                           borderRadius: BorderRadius.circular(35)),
                       child: Padding(
-                        padding: EdgeInsets.only(left: 20.0),
+                        padding: const EdgeInsets.only(left: 20.0),
                         child: TextField(
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText: "Ano",
+                              hintText: "Matricula",
                               hintStyle: TextStyle(
                                   fontSize: 17, color: Colors.grey[400]),
-                              labelStyle: TextStyle(color: Colors.black),
+                              labelStyle: const TextStyle(color: Colors.black),
                             ),
-                            onChanged: (value) => alunoEntity.ano = value),
+                            onChanged: (value) =>
+                                alunoEntity.matricula = int.tryParse(value)),
                       ),
                     ),
-                    Padding(padding: EdgeInsets.only(left: 10)),
                     Container(
-                      width: 170,
+                      width: 350,
                       height: 55,
                       margin: const EdgeInsets.only(top: 10),
                       decoration: BoxDecoration(
@@ -232,17 +172,91 @@ class _CadastroPageState extends State<CadastroPage> {
                           border: Border.all(color: Colors.white),
                           borderRadius: BorderRadius.circular(35)),
                       child: Padding(
-                        padding: EdgeInsets.only(left: 20.0),
+                        padding: const EdgeInsets.only(left: 20.0),
                         child: TextField(
                             decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText: "Turma",
+                              hintText: "Usuario",
                               hintStyle: TextStyle(
                                   fontSize: 17, color: Colors.grey[400]),
-                              labelStyle: TextStyle(color: Colors.black),
+                              labelStyle: const TextStyle(color: Colors.black),
                             ),
-                            onChanged: (value) => alunoEntity.turma = value),
+                            onChanged: (value) => alunoEntity.usuario = value),
                       ),
+                    ),
+                    Container(
+                      width: 350,
+                      height: 55,
+                      margin: const EdgeInsets.only(top: 10),
+                      decoration: BoxDecoration(
+                          color: Colors.grey[100],
+                          border: Border.all(color: Colors.white),
+                          borderRadius: BorderRadius.circular(35)),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
+                        child: TextField(
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Senha",
+                              hintStyle: TextStyle(
+                                  fontSize: 17, color: Colors.grey[400]),
+                              labelStyle: const TextStyle(color: Colors.black),
+                            ),
+                            onChanged: (value) => alunoEntity.senha = value),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 160,
+                          height: 55,
+                          margin: const EdgeInsets.only(top: 10),
+                          decoration: BoxDecoration(
+                              color: Colors.grey[100],
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(35)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 20.0),
+                            child: TextField(
+                                keyboardType: TextInputType.number,
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Ano",
+                                  hintStyle: TextStyle(
+                                      fontSize: 17, color: Colors.grey[400]),
+                                  labelStyle:
+                                      const TextStyle(color: Colors.black),
+                                ),
+                                onChanged: (value) => alunoEntity.ano = value),
+                          ),
+                        ),
+                        const Padding(padding: EdgeInsets.only(left: 10)),
+                        Container(
+                          width: 180,
+                          height: 55,
+                          margin: const EdgeInsets.only(top: 10),
+                          decoration: BoxDecoration(
+                              color: Colors.grey[100],
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(35)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 20.0),
+                            child: TextField(
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Turma",
+                                  hintStyle: TextStyle(
+                                      fontSize: 17, color: Colors.grey[400]),
+                                  labelStyle:
+                                      const TextStyle(color: Colors.black),
+                                ),
+                                onChanged: (value) =>
+                                    alunoEntity.turma = value),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -285,7 +299,7 @@ class _CadastroPageState extends State<CadastroPage> {
                               Navigator.pop(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => LoginPage()),
+                                    builder: (context) => const LoginPage()),
                               )
                             },
                         },
@@ -313,7 +327,7 @@ class _CadastroPageState extends State<CadastroPage> {
                             onPressed: (() => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => LoginPage()),
+                                      builder: (context) => const LoginPage()),
                                 )),
                             child: const Text("Entrar",
                                 style: TextStyle(
@@ -337,6 +351,15 @@ class _CadastroPageState extends State<CadastroPage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text("OK"))
+              ],
               title: const Text("Erro ao cadastrar usuario"),
               content: Text(texto));
         });

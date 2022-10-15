@@ -4,18 +4,20 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginDataSourceImp implements LoginDataSource {
   @override
-  Future<bool> logar(String usuario, String senha) async {
+  Future<Either<Exception, UserCredential>> logar(
+      String usuario, String senha) async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: '$usuario@educ.com', password: senha);
-      return true;
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: '$usuario@educ.com', password: senha);
+      return Right(userCredential);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
       } else if (e.code == 'wrong-password') {
         print('Wrong password provided for that user.');
       }
-      return false;
+      return Left(Exception(e));
     }
   }
 }

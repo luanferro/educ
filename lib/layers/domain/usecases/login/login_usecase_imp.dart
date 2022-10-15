@@ -9,7 +9,8 @@ class LoginUseCaseImp implements LoginUseCase {
   LoginUseCaseImp(this._usuarioRepository);
 
   @override
-  Future<bool> logar(String usuario, String senha) async {
+  Future<Either<Exception, UserCredential>> logar(
+      String usuario, String senha) async {
     return await _usuarioRepository.logar(usuario, senha);
   }
 }

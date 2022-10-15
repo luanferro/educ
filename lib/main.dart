@@ -3,14 +3,17 @@
 // found in the LICENSE file.
 
 import 'package:educ/core/inject/inject.dart';
-import 'package:educ/layers/presentation/ui/pages/login_page.dart';
+import 'package:educ/layers/presentation/ui/pages/splash_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() async {
   Inject.init();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+      overlays: [SystemUiOverlay.bottom]);
   runApp(const MyApp());
 }
 
@@ -26,7 +29,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSwatch()
               .copyWith(primary: Colors.deepPurpleAccent),
           visualDensity: VisualDensity.adaptivePlatformDensity),
-      home: LoginPage(),
+      home: const SplashPage(),
     );
   }
 }

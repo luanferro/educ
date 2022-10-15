@@ -1,6 +1,7 @@
 import 'package:either_dart/either.dart';
 import 'package:educ/layers/data/datasources/buscar_usuario_datasource.dart';
 import 'package:educ/layers/domain/repositories/usuario_repository.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../datasources/cadastro_usuario_datasource.dart';
 import '../datasources/login_datasource.dart';
@@ -20,7 +21,8 @@ class UsuarioRepositoryImp implements UsuarioRepository {
   }
 
   @override
-  Future<bool> logar(String usuario, String senha) {
+  Future<Either<Exception, UserCredential>> logar(
+      String usuario, String senha) {
     return _loginDataSource.logar(usuario, senha);
   }
 
