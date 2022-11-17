@@ -3,7 +3,6 @@ import 'package:educ/layers/presentation/ui/pages/home_page.dart';
 import 'package:educ/layers/presentation/ui/pages/perfil_page.dart';
 import 'package:educ/layers/presentation/ui/pages/ranking_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../controllers/aluno_controller.dart';

@@ -1,3 +1,4 @@
+import 'package:adaptive_components/adaptive_components.dart';
 import 'package:educ/layers/domain/entities/aluno_entity.dart';
 import 'package:educ/layers/presentation/controllers/aluno_controller.dart';
 import 'package:educ/layers/presentation/ui/pages/login_page.dart';
@@ -23,13 +24,11 @@ class _CadastroPageState extends State<CadastroPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        margin: const EdgeInsets.only(top: 40),
-        child: SingleChildScrollView(
+    return LayoutBuilder(builder: (context, constraints) {
+      return Scaffold(
+        backgroundColor: Colors.white,
+        body: SizedBox(
+          height: MediaQuery.of(context).size.height,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
@@ -338,14 +337,14 @@ class _CadastroPageState extends State<CadastroPage> {
                                     fontWeight: FontWeight.w500))),
                       ],
                     ),
-                  ),
+                  )
                 ],
-              )
+              ),
             ],
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   exibirAlertDialog(String texto) {

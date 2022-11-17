@@ -14,8 +14,9 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
 
-    Future.delayed(Duration(seconds: 3)).then((value) => Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => LoginPage())));
+    Future.delayed(const Duration(seconds: 3)).then((value) =>
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => const LoginPage())));
   }
 
   @override
@@ -32,10 +33,10 @@ class _SplashPageState extends State<SplashPage> {
               width: 250,
               height: 250,
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            SpinKitCircle(
+            const SpinKitCircle(
               color: Colors.white,
               size: 50.0,
             )
