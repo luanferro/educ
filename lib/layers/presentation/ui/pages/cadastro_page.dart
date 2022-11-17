@@ -26,6 +26,8 @@ class _CadastroPageState extends State<CadastroPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
         margin: const EdgeInsets.only(top: 40),
         child: SingleChildScrollView(
           child: Column(

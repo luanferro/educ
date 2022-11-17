@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSwatch()
               .copyWith(primary: Colors.deepPurpleAccent),
           visualDensity: VisualDensity.adaptivePlatformDensity),
-      home: const SplashPage(),
+      home: SplashPage(),
     );
   }
 }

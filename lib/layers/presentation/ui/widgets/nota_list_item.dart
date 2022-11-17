@@ -28,6 +28,9 @@ class NotaListItem extends StatelessWidget {
               width: 20,
             ),
             SizedBox(
+              width: 20,
+            ),
+            SizedBox(
               width: 170,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +52,11 @@ class NotaListItem extends StatelessWidget {
                 ],
               ),
             ),
+            SizedBox(
+              width: 30,
+            ),
             Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 const Text(
                   "Nota:",
@@ -59,7 +66,7 @@ class NotaListItem extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  nota.toDouble().toString(),
+                  formataNota(nota).toString(),
                   style: TextStyle(
                       fontSize: 30,
                       color: corNota(nota),
@@ -80,6 +87,14 @@ class NotaListItem extends StatelessWidget {
       return Color.fromARGB(255, 229, 225, 4);
     } else {
       return Color.fromARGB(255, 255, 9, 9);
+    }
+  }
+
+  formataNota(num nota) {
+    if (nota == 10) {
+      return nota;
+    } else {
+      return nota.toDouble();
     }
   }
 }
