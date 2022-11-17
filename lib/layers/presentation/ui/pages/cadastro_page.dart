@@ -28,7 +28,7 @@ class _CadastroPageState extends State<CadastroPage> {
       return Scaffold(
         backgroundColor: Colors.white,
         body: Padding(
-          padding: const EdgeInsets.only(top: 15),
+          padding: const EdgeInsets.only(top: 25),
           child: SizedBox(
             height: MediaQuery.of(context).size.height,
             child: Column(
@@ -47,296 +47,305 @@ class _CadastroPageState extends State<CadastroPage> {
                       icon: const Icon(Icons.arrow_back_ios_new)),
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 15,
                 ),
                 Center(
-                  child: Column(
-                    children: [
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Padding(padding: EdgeInsets.all(3)),
-                            Text(
-                              "REGISTRE-SE",
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.deepPurpleAccent,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ]),
-                      const SizedBox(
-                        height: 60,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.89,
-                            height: MediaQuery.of(context).size.height * 0.07,
-                            decoration: BoxDecoration(
-                                color: Colors.grey[100],
-                                border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(35)),
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 20.0),
-                              child: TextField(
-                                  decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: "Nome Completo",
-                                    hintStyle: TextStyle(
-                                        fontSize: 17, color: Colors.grey[400]),
-                                    labelStyle:
-                                        const TextStyle(color: Colors.black),
-                                  ),
-                                  onChanged: (value) =>
-                                      alunoEntity.nome = value),
-                            ),
-                          ),
-                          Row(
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.80,
+                    child: Column(
+                      children: [
+                        Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Padding(padding: EdgeInsets.only(left: 5)),
-                              Container(
-                                width: MediaQuery.of(context).size.width * 0.5,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.07,
-                                margin: const EdgeInsets.only(top: 10),
-                                decoration: BoxDecoration(
-                                    color: Colors.grey[100],
-                                    border: Border.all(color: Colors.white),
-                                    borderRadius: BorderRadius.circular(35)),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20.0),
-                                  child: TextField(
-                                      inputFormatters: [maskFormatter],
-                                      decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: "Data Nascimento",
-                                        hintStyle: TextStyle(
-                                            fontSize: 17,
-                                            color: Colors.grey[400]),
-                                        labelStyle: const TextStyle(
-                                            color: Colors.black),
-                                      ),
-                                      onChanged: (value) =>
-                                          alunoEntity.dataNascimento =
-                                              maskFormatter.getMaskedText()),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Container(
-                                width: MediaQuery.of(context).size.width * 0.38,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.07,
-                                margin: const EdgeInsets.only(top: 10),
-                                decoration: BoxDecoration(
-                                    color: Colors.grey[100],
-                                    border: Border.all(color: Colors.white),
-                                    borderRadius: BorderRadius.circular(35)),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20.0),
-                                  child: TextField(
-                                      decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: "Sexo",
-                                        hintStyle: TextStyle(
-                                            fontSize: 17,
-                                            color: Colors.grey[400]),
-                                        labelStyle: const TextStyle(
-                                            color: Colors.black),
-                                      ),
-                                      onChanged: (value) =>
-                                          alunoEntity.sexo = value),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.89,
-                            height: MediaQuery.of(context).size.height * 0.07,
-                            margin: const EdgeInsets.only(top: 10),
-                            decoration: BoxDecoration(
-                                color: Colors.grey[100],
-                                border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(35)),
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 20.0),
-                              child: TextField(
-                                  keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: "Matricula",
-                                    hintStyle: TextStyle(
-                                        fontSize: 17, color: Colors.grey[400]),
-                                    labelStyle:
-                                        const TextStyle(color: Colors.black),
-                                  ),
-                                  onChanged: (value) => alunoEntity.matricula =
-                                      int.tryParse(value)),
-                            ),
-                          ),
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.89,
-                            height: MediaQuery.of(context).size.height * 0.07,
-                            margin: const EdgeInsets.only(top: 10),
-                            decoration: BoxDecoration(
-                                color: Colors.grey[100],
-                                border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(35)),
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 20.0),
-                              child: TextField(
-                                  decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: "Usuario",
-                                    hintStyle: TextStyle(
-                                        fontSize: 17, color: Colors.grey[400]),
-                                    labelStyle:
-                                        const TextStyle(color: Colors.black),
-                                  ),
-                                  onChanged: (value) =>
-                                      alunoEntity.usuario = value),
-                            ),
-                          ),
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.89,
-                            height: MediaQuery.of(context).size.height * 0.07,
-                            margin: const EdgeInsets.only(top: 10),
-                            decoration: BoxDecoration(
-                                color: Colors.grey[100],
-                                border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(35)),
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 20.0),
-                              child: TextField(
-                                  obscureText: true,
-                                  decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: "Senha",
-                                    hintStyle: TextStyle(
-                                        fontSize: 17, color: Colors.grey[400]),
-                                    labelStyle:
-                                        const TextStyle(color: Colors.black),
-                                  ),
-                                  onChanged: (value) =>
-                                      alunoEntity.senha = value),
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: MediaQuery.of(context).size.width * 0.41,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.07,
-                                margin: const EdgeInsets.only(top: 10),
-                                decoration: BoxDecoration(
-                                    color: Colors.grey[100],
-                                    border: Border.all(color: Colors.white),
-                                    borderRadius: BorderRadius.circular(35)),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20.0),
-                                  child: TextField(
-                                      keyboardType: TextInputType.number,
-                                      decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: "Ano",
-                                        hintStyle: TextStyle(
-                                            fontSize: 17,
-                                            color: Colors.grey[400]),
-                                        labelStyle: const TextStyle(
-                                            color: Colors.black),
-                                      ),
-                                      onChanged: (value) =>
-                                          alunoEntity.ano = value),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Container(
-                                width: MediaQuery.of(context).size.width * 0.46,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.07,
-                                margin: const EdgeInsets.only(top: 10),
-                                decoration: BoxDecoration(
-                                    color: Colors.grey[100],
-                                    border: Border.all(color: Colors.white),
-                                    borderRadius: BorderRadius.circular(35)),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20.0),
-                                  child: TextField(
-                                      decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: "Turma",
-                                        hintStyle: TextStyle(
-                                            fontSize: 17,
-                                            color: Colors.grey[400]),
-                                        labelStyle: const TextStyle(
-                                            color: Colors.black),
-                                      ),
-                                      onChanged: (value) =>
-                                          alunoEntity.turma = value),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      Container(
-                        height: 48,
-                        width: 309,
-                        margin: const EdgeInsets.only(bottom: 15),
-                        child: ElevatedButton(
-                            onPressed: () async => {
-                                  await controller.cadastrarAluno(alunoEntity),
-                                  if (controller.retornoUsuario!.isLeft)
-                                    {
-                                      if (controller.erro.toString() ==
-                                          "Exception: senha fraca")
-                                        {
-                                          exibirAlertDialog(
-                                              "Senha fraca. Tente novamente com uma nova senha")
-                                        }
-                                      else if (controller.erro.toString() ==
-                                          'Exception: email em uso')
-                                        {
-                                          exibirAlertDialog(
-                                              "Este usuario já esta em uso")
-                                        }
-                                      else
-                                        {
-                                          exibirAlertDialog(
-                                              "Erro ao cadastrar aluno! Por favor, tente novamente.")
-                                        }
-                                    }
-                                  else
-                                    {
-                                      Navigator.pop(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const LoginPage()),
-                                      )
-                                    },
-                                },
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(32)),
-                            ),
-                            child: const Text("REGISTRAR",
+                            children: const [
+                              Padding(padding: EdgeInsets.all(3)),
+                              Text(
+                                "REGISTRE-SE",
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 17))),
-                      ),
-                      Column(
-                        children: [
-                          Container(
-                            child: Row(
+                                    fontSize: 30,
+                                    color: Colors.deepPurpleAccent,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ]),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.height * 0.07,
+                              decoration: BoxDecoration(
+                                  color: Colors.grey[100],
+                                  border: Border.all(color: Colors.white),
+                                  borderRadius: BorderRadius.circular(35)),
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 20.0),
+                                child: TextField(
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: "Nome Completo",
+                                      hintStyle: TextStyle(
+                                          fontSize: 17,
+                                          color: Colors.grey[400]),
+                                      labelStyle:
+                                          const TextStyle(color: Colors.black),
+                                    ),
+                                    onChanged: (value) =>
+                                        alunoEntity.nome = value),
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.47,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.07,
+                                  margin: const EdgeInsets.only(top: 10),
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey[100],
+                                      border: Border.all(color: Colors.white),
+                                      borderRadius: BorderRadius.circular(35)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 20.0),
+                                    child: TextField(
+                                        inputFormatters: [maskFormatter],
+                                        decoration: InputDecoration(
+                                          border: InputBorder.none,
+                                          hintText: "Data Nascimento",
+                                          hintStyle: TextStyle(
+                                              fontSize: 17,
+                                              color: Colors.grey[400]),
+                                          labelStyle: const TextStyle(
+                                              color: Colors.black),
+                                        ),
+                                        onChanged: (value) =>
+                                            alunoEntity.dataNascimento =
+                                                maskFormatter.getMaskedText()),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.30,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.07,
+                                  margin: const EdgeInsets.only(top: 10),
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey[100],
+                                      border: Border.all(color: Colors.white),
+                                      borderRadius: BorderRadius.circular(35)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 20.0),
+                                    child: TextField(
+                                        decoration: InputDecoration(
+                                          border: InputBorder.none,
+                                          hintText: "Sexo",
+                                          hintStyle: TextStyle(
+                                              fontSize: 17,
+                                              color: Colors.grey[400]),
+                                          labelStyle: const TextStyle(
+                                              color: Colors.black),
+                                        ),
+                                        onChanged: (value) =>
+                                            alunoEntity.sexo = value),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.height * 0.07,
+                              margin: const EdgeInsets.only(top: 10),
+                              decoration: BoxDecoration(
+                                  color: Colors.grey[100],
+                                  border: Border.all(color: Colors.white),
+                                  borderRadius: BorderRadius.circular(35)),
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 20.0),
+                                child: TextField(
+                                    keyboardType: TextInputType.number,
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: "Matricula",
+                                      hintStyle: TextStyle(
+                                          fontSize: 17,
+                                          color: Colors.grey[400]),
+                                      labelStyle:
+                                          const TextStyle(color: Colors.black),
+                                    ),
+                                    onChanged: (value) => alunoEntity
+                                        .matricula = int.tryParse(value)),
+                              ),
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.height * 0.07,
+                              margin: const EdgeInsets.only(top: 10),
+                              decoration: BoxDecoration(
+                                  color: Colors.grey[100],
+                                  border: Border.all(color: Colors.white),
+                                  borderRadius: BorderRadius.circular(35)),
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 20.0),
+                                child: TextField(
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: "Usuario",
+                                      hintStyle: TextStyle(
+                                          fontSize: 17,
+                                          color: Colors.grey[400]),
+                                      labelStyle:
+                                          const TextStyle(color: Colors.black),
+                                    ),
+                                    onChanged: (value) =>
+                                        alunoEntity.usuario = value),
+                              ),
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.height * 0.07,
+                              margin: const EdgeInsets.only(top: 10),
+                              decoration: BoxDecoration(
+                                  color: Colors.grey[100],
+                                  border: Border.all(color: Colors.white),
+                                  borderRadius: BorderRadius.circular(35)),
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 20.0),
+                                child: TextField(
+                                    obscureText: true,
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: "Senha",
+                                      hintStyle: TextStyle(
+                                          fontSize: 17,
+                                          color: Colors.grey[400]),
+                                      labelStyle:
+                                          const TextStyle(color: Colors.black),
+                                    ),
+                                    onChanged: (value) =>
+                                        alunoEntity.senha = value),
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.32,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.07,
+                                  margin: const EdgeInsets.only(top: 10),
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey[100],
+                                      border: Border.all(color: Colors.white),
+                                      borderRadius: BorderRadius.circular(35)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 20.0),
+                                    child: TextField(
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                          border: InputBorder.none,
+                                          hintText: "Ano",
+                                          hintStyle: TextStyle(
+                                              fontSize: 17,
+                                              color: Colors.grey[400]),
+                                          labelStyle: const TextStyle(
+                                              color: Colors.black),
+                                        ),
+                                        onChanged: (value) =>
+                                            alunoEntity.ano = value),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.46,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.07,
+                                  margin: const EdgeInsets.only(top: 10),
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey[100],
+                                      border: Border.all(color: Colors.white),
+                                      borderRadius: BorderRadius.circular(35)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 20.0),
+                                    child: TextField(
+                                        decoration: InputDecoration(
+                                          border: InputBorder.none,
+                                          hintText: "Turma",
+                                          hintStyle: TextStyle(
+                                              fontSize: 17,
+                                              color: Colors.grey[400]),
+                                          labelStyle: const TextStyle(
+                                              color: Colors.black),
+                                        ),
+                                        onChanged: (value) =>
+                                            alunoEntity.turma = value),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 40,
+                        ),
+                        Container(
+                          height: 48,
+                          width: 309,
+                          margin: const EdgeInsets.only(bottom: 15),
+                          child: ElevatedButton(
+                              onPressed: () async => {
+                                    await controller
+                                        .cadastrarAluno(alunoEntity),
+                                    if (controller.retornoUsuario!.isLeft)
+                                      {
+                                        if (controller.erro.toString() ==
+                                            "Exception: senha fraca")
+                                          {
+                                            exibirAlertDialog(
+                                                "Senha fraca. Tente novamente com uma nova senha")
+                                          }
+                                        else if (controller.erro.toString() ==
+                                            'Exception: email em uso')
+                                          {
+                                            exibirAlertDialog(
+                                                "Este usuario já esta em uso")
+                                          }
+                                        else
+                                          {
+                                            exibirAlertDialog(
+                                                "Erro ao cadastrar aluno! Por favor, tente novamente.")
+                                          }
+                                      }
+                                    else
+                                      {
+                                        Navigator.pop(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const LoginPage()),
+                                        )
+                                      },
+                                  },
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(32)),
+                              ),
+                              child: const Text("REGISTRAR",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 17))),
+                        ),
+                        Column(
+                          children: [
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 const Text(
@@ -359,11 +368,11 @@ class _CadastroPageState extends State<CadastroPage> {
                                             color: Colors.deepPurpleAccent,
                                             fontWeight: FontWeight.w500))),
                               ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
               return Stack(
                 children: <Widget>[
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.3,
+                    height: MediaQuery.of(context).size.height * 0.283,
                     color: Colors.transparent,
                     child: Container(
                       decoration: const BoxDecoration(
@@ -124,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                                     Text(controller.aluno?.nome ?? '',
                                         style: const TextStyle(
                                             color: Colors.white,
-                                            fontSize: 18,
+                                            fontSize: 23,
                                             fontWeight: FontWeight.bold)),
                                     Row(
                                       children: const [
@@ -188,9 +188,12 @@ class _HomePageState extends State<HomePage> {
                                 ],
                               ),
                               Container(
-                                width: 325,
+                                width: MediaQuery.of(context).size.width * 0.83,
                                 height: 0.5,
                                 color: Colors.black,
+                              ),
+                              const SizedBox(
+                                height: 15,
                               ),
                               Row(
                                 mainAxisAlignment:
