@@ -1,11 +1,7 @@
-import 'package:educ/layers/domain/entities/nota_entity.dart';
 import 'package:educ/layers/presentation/controllers/aluno_controller.dart';
 import 'package:educ/layers/presentation/controllers/usuario_controller.dart';
-import 'package:educ/layers/presentation/ui/pages/home_page.dart';
-import 'package:educ/layers/presentation/ui/pages/start_page.dart';
 import 'package:educ/layers/presentation/ui/widgets/nota_list_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../controllers/nota_controller.dart';

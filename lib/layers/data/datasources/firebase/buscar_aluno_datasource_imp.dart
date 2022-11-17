@@ -19,6 +19,7 @@ class BuscarAlunoDataSourceImp implements BuscarAlunoDataSource {
       if (aluno != null) {
         return Right(aluno);
       } else {
+        // ignore: avoid_print
         print("No such document.");
         return Left(Exception('Nenhum aluno encontrado'));
       }

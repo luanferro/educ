@@ -1,5 +1,4 @@
 import 'package:educ/layers/presentation/ui/pages/start_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get_it/get_it.dart';
@@ -7,7 +6,6 @@ import 'package:get_it/get_it.dart';
 import '../../controllers/aluno_controller.dart';
 import '../../controllers/usuario_controller.dart';
 import 'login_page.dart';
-import 'nota_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
