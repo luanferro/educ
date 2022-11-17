@@ -26,49 +26,51 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        body: Center(
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: SingleChildScrollView(
-              child: AdaptiveColumn(
-                children: [
-                  AdaptiveContainer(
-                      columnSpan: 12,
-                      child: SizedBox(
+        body: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * 0.75,
+          child: AdaptiveColumn(
+            children: [
+              AdaptiveContainer(
+                  columnSpan: 12,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.03,
+                      ),
+                      Image.asset(
+                        "images/logo_educ.png",
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height * 0.35,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Text(
+                              "ENTRAR NO",
+                              style: TextStyle(
+                                  fontSize: 23,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Open Sans'),
+                            ),
+                            Padding(padding: EdgeInsets.all(3)),
+                            Text(
+                              "EDUC",
+                              style: TextStyle(
+                                  fontSize: 23,
+                                  color: Colors.deepPurpleAccent,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ]),
+                      const SizedBox(
+                        height: 49,
+                      ),
+                      Center(
                         child: Column(
                           children: [
-                            const SizedBox(height: 20),
-                            Image.asset(
-                              "images/logo_educ.png",
-                              width: 200,
-                              height: 200,
-                            ),
-                            const SizedBox(
-                              height: 30,
-                            ),
-                            Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
-                                  Text(
-                                    "ENTRAR NO",
-                                    style: TextStyle(
-                                        fontSize: 23,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'Open Sans'),
-                                  ),
-                                  Padding(padding: EdgeInsets.all(3)),
-                                  Text(
-                                    "EDUC",
-                                    style: TextStyle(
-                                        fontSize: 23,
-                                        color: Colors.deepPurpleAccent,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ]),
-                            const SizedBox(
-                              height: 49,
-                            ),
                             Container(
                               width: 309,
                               height: 55,
@@ -188,43 +190,44 @@ class _LoginPageState extends State<LoginPage> {
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 17))),
                             ),
-                            const SizedBox(
-                              height: 50,
-                            ),
-                            Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      "Não possui conta?",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    TextButton(
-                                        onPressed: (() => Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      const CadastroPage()),
-                                            )),
-                                        child: const Text("Registre-se",
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                color: Colors.deepPurpleAccent,
-                                                fontWeight: FontWeight.w500))),
-                                  ],
-                                ),
-                              ],
-                            )
                           ],
                         ),
-                      )),
-                ],
-              ),
-            ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.12,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                "Não possui conta?",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              TextButton(
+                                  onPressed: (() => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const CadastroPage()),
+                                      )),
+                                  child: const Text("Registre-se",
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.deepPurpleAccent,
+                                          fontWeight: FontWeight.w500))),
+                            ],
+                          ),
+                        ],
+                      )
+                    ],
+                  )),
+            ],
           ),
         ));
   }
