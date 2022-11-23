@@ -1,3 +1,4 @@
+import 'package:educ/layers/domain/usecases/buscar_alunos/buscar_alunos_usecase.dart';
 import 'package:educ/layers/domain/usecases/cadastrar_usuario/cadastrar_usuario_usecase.dart';
 import 'package:either_dart/either.dart';
 import 'package:educ/layers/domain/entities/aluno_entity.dart';
@@ -6,14 +7,17 @@ import 'package:educ/layers/domain/usecases/cadastrar_aluno/cadastrar_aluno_usec
 
 class AlunoController {
   final BuscarAlunoUseCase _buscarAlunoUseCase;
+  final BuscarAlunosUseCase _buscarAlunosUseCase;
   final CadastrarAlunoUseCase _cadastrarAlunoUseCase;
   final CadastrarUsuarioUseCase _cadastrarUsuarioUseCase;
 
   AlunoController(this._buscarAlunoUseCase, this._cadastrarAlunoUseCase,
-      this._cadastrarUsuarioUseCase);
+      this._cadastrarUsuarioUseCase, this._buscarAlunosUseCase);
 
   Either<Exception, AlunoEntity>? retorno;
+  Either<Exception, List<AlunoEntity>>? retornoAlunos;
   AlunoEntity? aluno;
+  List<AlunoEntity> alunos = [];
   Either<Exception, bool>? retornoUsuario;
   Exception? erro;
 
@@ -21,6 +25,17 @@ class AlunoController {
     retorno = await _buscarAlunoUseCase.buscarAluno(usuario);
     if (retorno!.isRight) {
       aluno = retorno!.right;
+    }
+  }
+
+  buscarAlunos({required String turma}) async {
+    alunos.clear();
+    retornoAlunos = await _buscarAlunosUseCase.buscarAlunos(turma: turma);
+    if (retornoAlunos!.isRight) {
+      for (var aluno in retornoAlunos!.right) {
+        alunos.add(aluno);
+      }
+      return alunos;
     }
   }
 

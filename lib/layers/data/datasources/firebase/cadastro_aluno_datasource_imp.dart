@@ -16,34 +16,10 @@ class CadastroAlunoDataSourceImp implements CadastroAlunoDataSource {
       "ano": alunoEntity.ano,
       "turma": alunoEntity.turma,
       "usuario": alunoEntity.usuario,
-      "senha": alunoEntity.senha
+      "senha": alunoEntity.senha,
+      "pontos": 0
     };
 
-    //db.collection("alunos").doc(alunoEntity.usuario).set(aluno);
-    List<String> materias = [
-      "fisica",
-      "matemática",
-      "português",
-      "geografia",
-      "historia",
-      "biologia",
-      "química",
-      "filosofia",
-      "sociologia",
-      "inglês",
-      "espanhol",
-      "literatura",
-      "redação"
-    ];
-    List<Map<String, dynamic>> notas = ScriptNotas().getNotas(materias);
-
-    for (var nota in notas) {
-      db
-          .collection("alunos")
-          .doc("avaliador")
-          .collection("notas")
-          .doc()
-          .set(nota);
-    }
+    db.collection("alunos").doc(alunoEntity.usuario).set(aluno);
   }
 }

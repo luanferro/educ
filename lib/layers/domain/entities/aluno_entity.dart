@@ -9,6 +9,7 @@ class AlunoEntity {
   String? turma;
   String? usuario;
   String? senha;
+  int? pontos;
 
   AlunoEntity(
       {this.nome,
@@ -18,7 +19,8 @@ class AlunoEntity {
       this.ano,
       this.turma,
       this.usuario,
-      this.senha});
+      this.senha,
+      this.pontos});
 
   factory AlunoEntity.fromFirestore(
     DocumentSnapshot<Map<String, dynamic>> snapshot,
@@ -33,7 +35,8 @@ class AlunoEntity {
         ano: data?['ano'],
         turma: data?['turma'],
         usuario: data?['usuario'],
-        senha: data?['senha']);
+        senha: data?['senha'],
+        pontos: data?['pontos']);
   }
 
   Map<String, dynamic> toFirestore() {
@@ -46,6 +49,7 @@ class AlunoEntity {
       if (turma != null) "turma": turma,
       if (usuario != null) "usuario": usuario,
       if (senha != null) "senha": senha,
+      if (pontos != null) "pontos": pontos
     };
   }
 }

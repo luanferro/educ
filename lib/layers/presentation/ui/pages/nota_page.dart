@@ -26,11 +26,14 @@ class _NotaPageState extends State<NotaPage> {
 
   @override
   Widget build(BuildContext context) {
+    var altura = MediaQuery.of(context).size.height;
+    var largura = MediaQuery.of(context).size.width;
+
     return DefaultTabController(
         length: tabs.length,
         child: Scaffold(
           appBar: AppBar(
-            toolbarHeight: 155,
+            toolbarHeight: altura * 0.22,
             flexibleSpace: Column(
               children: [
                 const SizedBox(
@@ -171,17 +174,14 @@ class _NotaPageState extends State<NotaPage> {
   painelListaVazia() {
     return Container(
       color: Colors.black12,
-      child: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 60),
-        child: Center(
-          child: Text(
-            "Dados do bimestre não encontrados",
-            style: TextStyle(
-                color: Color.fromARGB(255, 71, 50, 108),
-                fontSize: 25,
-                fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          ),
+      child: const Center(
+        child: Text(
+          "Dados do bimestre não encontrados",
+          style: TextStyle(
+              color: Color.fromARGB(255, 71, 50, 108),
+              fontSize: 25,
+              fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
         ),
       ),
     );

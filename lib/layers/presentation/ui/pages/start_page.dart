@@ -26,6 +26,7 @@ class _StartPageState extends State<StartPage> {
   @override
   void initState() {
     controllerNota.buscarNotasUseCase(controllerUsuario.usuario ?? '');
+    controller.buscarAlunos(turma: "");
     super.initState();
   }
 

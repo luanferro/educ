@@ -18,6 +18,8 @@ import 'package:educ/layers/domain/repositories/nota_repository.dart';
 import 'package:educ/layers/domain/repositories/usuario_repository.dart';
 import 'package:educ/layers/domain/usecases/buscar_aluno/buscar_aluno_usecase.dart';
 import 'package:educ/layers/domain/usecases/buscar_aluno/buscar_aluno_usecase_imp.dart';
+import 'package:educ/layers/domain/usecases/buscar_alunos/buscar_alunos_usecase.dart';
+import 'package:educ/layers/domain/usecases/buscar_alunos/buscar_alunos_usecase_imp.dart';
 import 'package:educ/layers/domain/usecases/buscar_notas/buscar_notas_usecase.dart';
 import 'package:educ/layers/domain/usecases/buscar_notas/buscar_notas_usecase_imp.dart';
 import 'package:educ/layers/domain/usecases/buscar_usuario/buscar_usuario_usecase.dart';
@@ -32,6 +34,9 @@ import 'package:educ/layers/presentation/controllers/aluno_controller.dart';
 import 'package:educ/layers/presentation/controllers/nota_controller.dart';
 import 'package:educ/layers/presentation/controllers/usuario_controller.dart';
 import 'package:get_it/get_it.dart';
+
+import '../../layers/data/datasources/buscar_alunos_datasource.dart';
+import '../../layers/data/datasources/firebase/buscar_alunos_datasource_imp.dart';
 
 class Inject {
   static void init() {
@@ -55,12 +60,15 @@ class Inject {
     getIt.registerLazySingleton<BuscarAlunoDataSource>(
         () => BuscarAlunoDataSourceImp());
 
+    getIt.registerLazySingleton<BuscarAlunosDataSource>(
+        () => BuscarAlunosDataSourceImp());
+
     //repositories
     getIt.registerLazySingleton<UsuarioRepository>(
         () => UsuarioRepositoryImp(getIt(), getIt(), getIt()));
 
     getIt.registerLazySingleton<AlunoRepository>(
-        () => AlunoRepositoryImp(getIt(), getIt()));
+        () => AlunoRepositoryImp(getIt(), getIt(), getIt()));
 
     getIt.registerLazySingleton<NotaRepository>(
         () => NotaRepositoryImp(getIt()));
@@ -82,12 +90,14 @@ class Inject {
     getIt.registerLazySingleton<BuscarUsuarioUseCase>(
         () => BuscarUsuarioUseCaseImp(getIt()));
 
+    getIt.registerLazySingleton<BuscarAlunosUseCase>(
+        () => BuscarAlunosUseCaseImp(getIt()));
     //controllers
     getIt.registerLazySingleton<UsuarioController>(
         () => UsuarioController(getIt(), getIt(), getIt()));
 
     getIt.registerLazySingleton<AlunoController>(
-        () => AlunoController(getIt(), getIt(), getIt()));
+        () => AlunoController(getIt(), getIt(), getIt(), getIt()));
 
     getIt.registerLazySingleton<NotaController>(() => NotaController(getIt()));
   }

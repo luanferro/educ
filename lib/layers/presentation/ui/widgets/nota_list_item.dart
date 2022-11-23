@@ -30,9 +30,6 @@ class NotaListItem extends StatelessWidget {
               width: 20,
             ),
             SizedBox(
-              width: 20,
-            ),
-            SizedBox(
               width: 170,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,9 +50,6 @@ class NotaListItem extends StatelessWidget {
                   )
                 ],
               ),
-            ),
-            SizedBox(
-              width: 30,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -93,7 +87,7 @@ class NotaListItem extends StatelessWidget {
   }
 
   formataNota(num nota) {
-    if (nota == 10) {
+    if (nota == 10 || nota == 0) {
       return nota;
     } else {
       return nota.toDouble();
