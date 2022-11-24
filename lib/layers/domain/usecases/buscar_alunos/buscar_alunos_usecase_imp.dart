@@ -1,7 +1,8 @@
-import 'package:educ/layers/domain/entities/aluno_entity.dart';
-import 'package:educ/layers/domain/usecases/buscar_aluno/buscar_aluno_usecase_imp.dart';
-import 'package:educ/layers/domain/usecases/buscar_alunos/buscar_alunos_usecase.dart';
+// ignore: implementation_imports
 import 'package:either_dart/src/either.dart';
+
+import 'package:educ/layers/domain/entities/aluno_entity.dart';
+import 'package:educ/layers/domain/usecases/buscar_alunos/buscar_alunos_usecase.dart';
 
 import '../../repositories/aluno_repository.dart';
 

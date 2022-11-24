@@ -20,6 +20,8 @@ import 'package:educ/layers/domain/usecases/buscar_aluno/buscar_aluno_usecase.da
 import 'package:educ/layers/domain/usecases/buscar_aluno/buscar_aluno_usecase_imp.dart';
 import 'package:educ/layers/domain/usecases/buscar_alunos/buscar_alunos_usecase.dart';
 import 'package:educ/layers/domain/usecases/buscar_alunos/buscar_alunos_usecase_imp.dart';
+import 'package:educ/layers/domain/usecases/buscar_foto_perfil/buscar_foto_perfil_usecase.dart';
+import 'package:educ/layers/domain/usecases/buscar_foto_perfil/buscar_foto_perfil_usecase_imp.dart';
 import 'package:educ/layers/domain/usecases/buscar_notas/buscar_notas_usecase.dart';
 import 'package:educ/layers/domain/usecases/buscar_notas/buscar_notas_usecase_imp.dart';
 import 'package:educ/layers/domain/usecases/buscar_usuario/buscar_usuario_usecase.dart';
@@ -92,12 +94,15 @@ class Inject {
 
     getIt.registerLazySingleton<BuscarAlunosUseCase>(
         () => BuscarAlunosUseCaseImp(getIt()));
+
+    getIt.registerLazySingleton<BuscarFotoPerfilUseCase>(
+        () => BuscarFotoPerfilUseCaseImp(getIt()));
     //controllers
     getIt.registerLazySingleton<UsuarioController>(
         () => UsuarioController(getIt(), getIt(), getIt()));
 
     getIt.registerLazySingleton<AlunoController>(
-        () => AlunoController(getIt(), getIt(), getIt(), getIt()));
+        () => AlunoController(getIt(), getIt(), getIt(), getIt(), getIt()));
 
     getIt.registerLazySingleton<NotaController>(() => NotaController(getIt()));
   }

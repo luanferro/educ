@@ -1,4 +1,3 @@
-import 'package:educ/layers/domain/entities/aluno_entity.dart';
 import 'package:educ/layers/presentation/ui/widgets/classificacao_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -13,10 +12,10 @@ class ClassificacaoPage extends StatefulWidget {
 
 class _ClassificacaoPageState extends State<ClassificacaoPage> {
   var controller = GetIt.I.get<AlunoController>();
-  var colorGeral = const Color.fromARGB(255, 124, 77, 255);
-  var colorTurma = const Color.fromRGBO(255, 255, 255, 1);
-  var colorTextGeral = Colors.white;
-  var colorTextTurma = Colors.black;
+  var colorGeral = const Color.fromRGBO(255, 255, 255, 1);
+  var colorTurma = const Color.fromARGB(255, 124, 77, 255);
+  var colorTextGeral = Colors.black;
+  var colorTextTurma = Colors.white;
   var elo = "";
   var colorRanking = Colors.transparent;
 
@@ -25,6 +24,7 @@ class _ClassificacaoPageState extends State<ClassificacaoPage> {
     super.initState();
 
     nomeElo(controller.aluno?.pontos ?? 0);
+    _reloadList("");
   }
 
   @override
@@ -276,6 +276,7 @@ class _ClassificacaoPageState extends State<ClassificacaoPage> {
   }
 
   Future<void> _reloadList(String turma) async {
+    // ignore: prefer_typing_uninitialized_variables
     var newList;
     if (turma != "") {
       newList = await Future.delayed(const Duration(seconds: 0),

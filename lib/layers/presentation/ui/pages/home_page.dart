@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:educ/layers/data/datasources/firebase/cadastro_aluno_datasource_imp.dart';
 import 'package:educ/layers/presentation/ui/pages/start_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -24,6 +23,7 @@ class _HomePageState extends State<HomePage> {
   var colorRanking = Colors.transparent;
   XFile? imagem;
   XFile? imagemTemporaria;
+  String pathImage = '';
   final ImagePicker _picker = ImagePicker();
 
   @override
@@ -32,10 +32,12 @@ class _HomePageState extends State<HomePage> {
     nomeElo(controller.aluno?.pontos ?? 0);
 
     if (controller.aluno?.nome == null) {
-      Future.delayed(const Duration(seconds: 2)).then((value) =>
-          Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const StartPage())));
+      Future.delayed(const Duration(seconds: 1)).then((value) {
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => const StartPage()));
+      });
     }
+    _reloadFotoPerfil();
   }
 
   @override
@@ -114,11 +116,13 @@ class _HomePageState extends State<HomePage> {
                                         backgroundColor: Colors.white,
                                         child: CircleAvatar(
                                             radius: 32,
-                                            backgroundImage: (imagem != null)
-                                                ? FileImage(File(imagem!.path))
-                                                    as ImageProvider
-                                                : AssetImage(
-                                                    "images/semfoto.png"))),
+                                            backgroundImage:
+                                                (controller.pathImage != null)
+                                                    ? NetworkImage(
+                                                        controller.pathImage ??
+                                                            '') as ImageProvider
+                                                    : const AssetImage(
+                                                        'images/semfoto.png'))),
                                     style: ElevatedButton.styleFrom(
                                         shape: const CircleBorder()),
                                     onPressed: () {
@@ -157,7 +161,7 @@ class _HomePageState extends State<HomePage> {
                                     },
                                   ),
                                   SizedBox(
-                                    width: largura * 0.10,
+                                    width: largura * 0.08,
                                   ),
                                   Column(
                                     children: [
@@ -507,15 +511,28 @@ class _HomePageState extends State<HomePage> {
 
   void pegarImagemGaleria() async {
     imagemTemporaria = await _picker.pickImage(source: ImageSource.gallery);
-    setState(() {
-      imagem = imagemTemporaria;
-    });
+    imagem = imagemTemporaria;
+    await CadastroAlunoDataSourceImp()
+        .salvarImagemPerfil(controller.aluno?.usuario ?? '', imagem!.path);
+    _reloadFotoPerfil();
   }
 
   void pegarImagemCamera() async {
     imagemTemporaria = await _picker.pickImage(source: ImageSource.camera);
+    imagem = imagemTemporaria;
+    await CadastroAlunoDataSourceImp()
+        .salvarImagemPerfil(controller.aluno?.usuario ?? '', imagem!.path);
+    _reloadFotoPerfil();
+  }
+
+  void _reloadFotoPerfil() async {
+    await controller.buscarAlunoUseCase(controller.aluno?.usuario ?? '');
+    var newPath = await Future.delayed(
+        const Duration(seconds: 0),
+        () =>
+            controller.buscarImagemStorage(controller.aluno?.fotoPerfil ?? ''));
     setState(() {
-      imagem = imagemTemporaria;
+      controller.pathImage = newPath;
     });
   }
 }

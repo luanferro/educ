@@ -3,7 +3,6 @@ import 'package:educ/layers/domain/entities/aluno_entity.dart';
 import 'package:educ/layers/presentation/controllers/aluno_controller.dart';
 import 'package:educ/layers/presentation/ui/pages/login_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:get_it/get_it.dart';
 
@@ -96,6 +95,7 @@ class _CadastroPageState extends State<CadastroPage> {
                                           if (value == null || value.isEmpty) {
                                             return 'Campo inválido';
                                           }
+                                          return null;
                                         },
                                         decoration: InputDecoration(
                                           border: InputBorder.none,
@@ -135,6 +135,7 @@ class _CadastroPageState extends State<CadastroPage> {
                                                   value.isEmpty) {
                                                 return 'Campo inválido';
                                               }
+                                              return null;
                                             },
                                             keyboardType: TextInputType.number,
                                             inputFormatters: [
@@ -211,6 +212,7 @@ class _CadastroPageState extends State<CadastroPage> {
                                           if (value == null || value.isEmpty) {
                                             return 'Campo inválido';
                                           }
+                                          return null;
                                         },
                                         keyboardType: TextInputType.number,
                                         maxLength: 9,
@@ -245,6 +247,7 @@ class _CadastroPageState extends State<CadastroPage> {
                                           if (value == null || value.isEmpty) {
                                             return 'Campo inválido';
                                           }
+                                          return null;
                                         },
                                         decoration: InputDecoration(
                                           border: InputBorder.none,
@@ -275,6 +278,7 @@ class _CadastroPageState extends State<CadastroPage> {
                                           if (value == null || value.isEmpty) {
                                             return 'Campo inválido';
                                           }
+                                          return null;
                                         },
                                         obscureText: true,
                                         decoration: InputDecoration(
@@ -315,6 +319,7 @@ class _CadastroPageState extends State<CadastroPage> {
                                                   value.isEmpty) {
                                                 return 'Campo inválido';
                                               }
+                                              return null;
                                             },
                                             keyboardType: TextInputType.number,
                                             decoration: InputDecoration(
@@ -357,6 +362,7 @@ class _CadastroPageState extends State<CadastroPage> {
                                                       .hasMatch(value)) {
                                                 return 'Campo inválido';
                                               }
+                                              return null;
                                             },
                                             maxLength: 4,
                                             decoration: InputDecoration(

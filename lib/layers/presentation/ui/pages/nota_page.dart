@@ -27,7 +27,6 @@ class _NotaPageState extends State<NotaPage> {
   @override
   Widget build(BuildContext context) {
     var altura = MediaQuery.of(context).size.height;
-    var largura = MediaQuery.of(context).size.width;
 
     return DefaultTabController(
         length: tabs.length,

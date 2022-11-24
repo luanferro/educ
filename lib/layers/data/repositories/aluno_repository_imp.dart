@@ -28,4 +28,9 @@ class AlunoRepositoryImp implements AlunoRepository {
       {required String turma}) {
     return _buscarAlunosDataSource.buscarAlunos(turma: turma);
   }
+
+  @override
+  Future<String> buscarImagemPerfil(String imagemName) {
+    return _getAlunoDataSource.carregarImagemPerfil(imagemName);
+  }
 }

@@ -25,9 +25,8 @@ class _StartPageState extends State<StartPage> {
 
   @override
   void initState() {
-    controllerNota.buscarNotasUseCase(controllerUsuario.usuario ?? '');
-    controller.buscarAlunos(turma: "");
     super.initState();
+    controllerNota.buscarNotasUseCase(controllerUsuario.usuario ?? '');
   }
 
   @override
@@ -58,6 +57,9 @@ class _StartPageState extends State<StartPage> {
               currentIndex: pageViewController.page?.round() ?? 2,
               onTap: (index) {
                 pageViewController.jumpToPage(index);
+                if (index == 3) {
+                  controller.buscarAlunos(turma: "");
+                }
               },
               type: BottomNavigationBarType.fixed,
               selectedItemColor: Colors.deepPurpleAccent,

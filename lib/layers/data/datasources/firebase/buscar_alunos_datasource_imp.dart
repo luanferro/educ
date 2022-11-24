@@ -38,7 +38,7 @@ class BuscarAlunosDataSourceImp implements BuscarAlunosDataSource {
 
       listaAlunos = listaAlunos.reversed.toList();
 
-      if (turma != null && turma != "") {
+      if (turma != "") {
         for (var aluno in listaAlunos) {
           if (aluno.turma!.contains(turma)) {
             listaAlunosTurma.add(aluno);

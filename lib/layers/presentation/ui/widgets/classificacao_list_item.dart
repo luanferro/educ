@@ -1,6 +1,7 @@
 import 'package:educ/layers/domain/entities/aluno_entity.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ClassificacaoListItem extends StatelessWidget {
   ClassificacaoListItem(
       {super.key,
@@ -12,7 +13,7 @@ class ClassificacaoListItem extends StatelessWidget {
   final int posicao;
   final bool alunoLogado;
 
-  var colorRanking = Color.fromRGBO(0, 0, 0, 0);
+  var colorRanking = const Color.fromRGBO(0, 0, 0, 0);
   var colorBorder = Colors.transparent;
   @override
   Widget build(BuildContext context) {
@@ -87,7 +88,8 @@ class ClassificacaoListItem extends StatelessWidget {
                 children: [
                   Text(
                     aluno.pontos.toString(),
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 25, fontWeight: FontWeight.bold),
                   )
                 ],
               ),
@@ -104,15 +106,15 @@ class ClassificacaoListItem extends StatelessWidget {
     } else if (pontos > 400 && pontos < 899) {
       colorRanking = Colors.grey;
     } else if (pontos > 900 && pontos < 1399) {
-      colorRanking = Color.fromRGBO(251, 192, 45, 1);
+      colorRanking = const Color.fromRGBO(251, 192, 45, 1);
     } else if (pontos > 1400 && pontos < 1999) {
-      colorRanking = Color.fromRGBO(0, 200, 83, 1);
+      colorRanking = const Color.fromRGBO(0, 200, 83, 1);
     } else if (pontos > 2000 && pontos < 2499) {
-      colorRanking = Color.fromRGBO(2, 119, 189, 1);
+      colorRanking = const Color.fromRGBO(2, 119, 189, 1);
     } else if (pontos > 2500 && pontos < 2999) {
-      colorRanking = Color.fromRGBO(224, 64, 251, 1);
+      colorRanking = const Color.fromRGBO(224, 64, 251, 1);
     } else {
-      colorRanking = Color.fromRGBO(183, 28, 28, 1);
+      colorRanking = const Color.fromRGBO(183, 28, 28, 1);
     }
     return colorRanking;
   }

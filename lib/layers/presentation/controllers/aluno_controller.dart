@@ -1,4 +1,5 @@
 import 'package:educ/layers/domain/usecases/buscar_alunos/buscar_alunos_usecase.dart';
+import 'package:educ/layers/domain/usecases/buscar_foto_perfil/buscar_foto_perfil_usecase.dart';
 import 'package:educ/layers/domain/usecases/cadastrar_usuario/cadastrar_usuario_usecase.dart';
 import 'package:either_dart/either.dart';
 import 'package:educ/layers/domain/entities/aluno_entity.dart';
@@ -10,9 +11,14 @@ class AlunoController {
   final BuscarAlunosUseCase _buscarAlunosUseCase;
   final CadastrarAlunoUseCase _cadastrarAlunoUseCase;
   final CadastrarUsuarioUseCase _cadastrarUsuarioUseCase;
+  final BuscarFotoPerfilUseCase _buscarFotoPerfilUseCase;
 
-  AlunoController(this._buscarAlunoUseCase, this._cadastrarAlunoUseCase,
-      this._cadastrarUsuarioUseCase, this._buscarAlunosUseCase);
+  AlunoController(
+      this._buscarAlunoUseCase,
+      this._cadastrarAlunoUseCase,
+      this._cadastrarUsuarioUseCase,
+      this._buscarAlunosUseCase,
+      this._buscarFotoPerfilUseCase);
 
   Either<Exception, AlunoEntity>? retorno;
   Either<Exception, List<AlunoEntity>>? retornoAlunos;
@@ -20,6 +26,7 @@ class AlunoController {
   List<AlunoEntity> alunos = [];
   Either<Exception, bool>? retornoUsuario;
   Exception? erro;
+  String? pathImage;
 
   buscarAlunoUseCase(String usuario) async {
     retorno = await _buscarAlunoUseCase.buscarAluno(usuario);
@@ -48,5 +55,10 @@ class AlunoController {
     } else {
       erro = retornoUsuario!.left;
     }
+  }
+
+  buscarImagemStorage(String nomeImagem) async {
+    pathImage = await _buscarFotoPerfilUseCase.buscarImagemPeril(nomeImagem);
+    return pathImage;
   }
 }

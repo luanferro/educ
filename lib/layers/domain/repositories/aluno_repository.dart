@@ -7,4 +7,5 @@ abstract class AlunoRepository {
 
   Future<Either<Exception, List<AlunoEntity>>> buscarAlunos(
       {required String turma});
+  Future<String> buscarImagemPerfil(String imagemName);
 }
