@@ -1,12 +1,16 @@
+import 'package:educ/layers/data/datasources/firebase/buscar_aluno_datasource_imp.dart';
 import 'package:educ/layers/data/datasources/firebase/cadastro_aluno_datasource_imp.dart';
+import 'package:educ/layers/presentation/ui/pages/imagem_evento.dart';
 import 'package:educ/layers/presentation/ui/pages/start_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../../controllers/aluno_controller.dart';
 import '../../controllers/usuario_controller.dart';
+import '../widgets/classificacao_list_item.dart';
 import 'login_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -38,6 +42,7 @@ class _HomePageState extends State<HomePage> {
       });
     }
     _reloadFotoPerfil();
+    controller.buscarEventos();
   }
 
   @override
@@ -458,6 +463,14 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                       ),
+                      Flexible(
+                          flex: 1,
+                          child: Container(
+                              margin: EdgeInsets.only(left: 10),
+                              width: largura,
+                              height: altura * 0.15,
+                              color: Colors.white,
+                              child: exibirLista(context)))
                     ],
                   )
                 ],
@@ -474,6 +487,99 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  exibirLista(BuildContext context) {
+    if (controller.eventos.isNotEmpty) {
+      return montaLista(controller.eventos, context);
+    } else {
+      return const Center(
+        child: Text("Sem dados"),
+      );
+    }
+  }
+
+  Widget montaLista(List lista, BuildContext context) {
+    return ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, int index) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GestureDetector(
+              onTap: (() {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        insetPadding: EdgeInsets.all(25),
+                        contentPadding: EdgeInsets.zero,
+                        content: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    child: ImagemEvento(
+                                        imagem_recebida: lista[index]),
+                                    type: PageTransitionType.fade));
+                          },
+                          child: ClipRRect(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(13)),
+                            child: Image.network(
+                              lista[index],
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        actionsAlignment: MainAxisAlignment.center,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        actions: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: const Text("Acessar Evento")),
+                              Icon(
+                                Icons.keyboard_double_arrow_right,
+                                color: Colors.deepPurpleAccent,
+                              )
+                            ],
+                          ),
+                        ],
+                      );
+                    });
+              }),
+              child: Ink(
+                width: 250,
+                color: Colors.transparent,
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(13),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 3,
+                            blurRadius: 3,
+                            offset: const Offset(0, 3))
+                      ]),
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(13)),
+                    child: Image.network(
+                      lista[index],
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+        itemCount: lista.length);
   }
 
   nomeElo(int pontos) {

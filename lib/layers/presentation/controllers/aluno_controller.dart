@@ -1,3 +1,4 @@
+import 'package:educ/layers/data/datasources/firebase/buscar_aluno_datasource_imp.dart';
 import 'package:educ/layers/domain/usecases/buscar_alunos/buscar_alunos_usecase.dart';
 import 'package:educ/layers/domain/usecases/buscar_foto_perfil/buscar_foto_perfil_usecase.dart';
 import 'package:educ/layers/domain/usecases/cadastrar_usuario/cadastrar_usuario_usecase.dart';
@@ -27,6 +28,7 @@ class AlunoController {
   Either<Exception, bool>? retornoUsuario;
   Exception? erro;
   String? pathImage;
+  List<String> eventos = [];
 
   buscarAlunoUseCase(String usuario) async {
     retorno = await _buscarAlunoUseCase.buscarAluno(usuario);
@@ -60,5 +62,9 @@ class AlunoController {
   buscarImagemStorage(String nomeImagem) async {
     pathImage = await _buscarFotoPerfilUseCase.buscarImagemPeril(nomeImagem);
     return pathImage;
+  }
+
+  buscarEventos() async {
+    eventos = await BuscarAlunoDataSourceImp().carregarImagensEventos();
   }
 }

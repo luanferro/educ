@@ -48,6 +48,7 @@ dependencies:
   flutter_spinkit: ^5.1.0 
   adaptive_components: ^0.0.7
   firebase_storage: ^10.3.11
+  page_transition: ^2.0.9
 
 dev_dependencies:
   flutter_test:

@@ -41,4 +41,26 @@ class BuscarAlunoDataSourceImp implements BuscarAlunoDataSource {
       throw Exception('Erro no download $e');
     }
   }
+
+  Future<List<String>> carregarImagensEventos() async {
+    try {
+      List<Reference> refs = [];
+      List<String> arquivos = [];
+
+      String ref1 = await storage.ref('eventos/evento1.jpeg').getDownloadURL();
+      String ref2 = await storage.ref('eventos/evento2.jpeg').getDownloadURL();
+      String ref3 = await storage.ref('eventos/evento3.jpeg').getDownloadURL();
+      // refs = (await storage.ref('eventos/').list()).items;
+
+      // for (var ref in refs) {
+      //   arquivos.add(await ref.getDownloadURL());
+      // }
+      arquivos.add(ref1);
+      arquivos.add(ref2);
+      arquivos.add(ref3);
+      return arquivos;
+    } on FirebaseException catch (e) {
+      throw Exception('Erro no download $e');
+    }
+  }
 }
