@@ -49,6 +49,8 @@ dependencies:
   adaptive_components: ^0.0.7
   firebase_storage: ^10.3.11
   page_transition: ^2.0.9
+  pie_chart: ^5.3.2
+  percent_indicator: ^4.2.2
 
 dev_dependencies:
   flutter_test:

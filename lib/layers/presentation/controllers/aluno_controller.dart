@@ -1,4 +1,6 @@
 import 'package:educ/layers/data/datasources/firebase/buscar_aluno_datasource_imp.dart';
+import 'package:educ/layers/data/datasources/firebase/buscar_pontos_datasource_imp.dart';
+import 'package:educ/layers/domain/entities/ponto_entity.dart';
 import 'package:educ/layers/domain/usecases/buscar_alunos/buscar_alunos_usecase.dart';
 import 'package:educ/layers/domain/usecases/buscar_foto_perfil/buscar_foto_perfil_usecase.dart';
 import 'package:educ/layers/domain/usecases/cadastrar_usuario/cadastrar_usuario_usecase.dart';
@@ -23,12 +25,14 @@ class AlunoController {
 
   Either<Exception, AlunoEntity>? retorno;
   Either<Exception, List<AlunoEntity>>? retornoAlunos;
+  Either<Exception, List<PontoEntity>>? retornoPontos;
   AlunoEntity? aluno;
   List<AlunoEntity> alunos = [];
   Either<Exception, bool>? retornoUsuario;
   Exception? erro;
   String? pathImage;
   List<String> eventos = [];
+  List<PontoEntity> pontos = [];
 
   buscarAlunoUseCase(String usuario) async {
     retorno = await _buscarAlunoUseCase.buscarAluno(usuario);
@@ -66,5 +70,17 @@ class AlunoController {
 
   buscarEventos() async {
     eventos = await BuscarAlunoDataSourceImp().carregarImagensEventos();
+  }
+
+  buscarPontos(String usuario) async {
+    pontos.clear();
+    retornoPontos =
+        await BuscarPontosDataSourceImp().buscarPontosGanhos(usuario);
+    if (retornoPontos!.isRight) {
+      for (var ponto in retornoPontos!.right) {
+        pontos.add(ponto);
+      }
+      return pontos;
+    }
   }
 }

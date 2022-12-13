@@ -1,4 +1,4 @@
-import 'package:educ/layers/data/datasources/firebase/buscar_aluno_datasource_imp.dart';
+import 'package:educ/layers/data/datasources/firebase/buscar_pontos_datasource_imp.dart';
 import 'package:educ/layers/data/datasources/firebase/cadastro_aluno_datasource_imp.dart';
 import 'package:educ/layers/presentation/ui/pages/imagem_evento.dart';
 import 'package:educ/layers/presentation/ui/pages/start_page.dart';
@@ -10,7 +10,6 @@ import 'package:page_transition/page_transition.dart';
 
 import '../../controllers/aluno_controller.dart';
 import '../../controllers/usuario_controller.dart';
-import '../widgets/classificacao_list_item.dart';
 import 'login_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -43,6 +42,7 @@ class _HomePageState extends State<HomePage> {
     }
     _reloadFotoPerfil();
     controller.buscarEventos();
+    controller.buscarPontos(controllerUsuario.usuario ?? '');
   }
 
   @override
@@ -84,12 +84,6 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 IconButton(
-                                    onPressed: (() {}),
-                                    icon: const Icon(
-                                      Icons.settings,
-                                      color: Colors.white,
-                                    )),
-                                IconButton(
                                     onPressed: ((() async {
                                       controllerUsuario.deslogarUsuario();
                                       Navigator.pushReplacement(
@@ -104,7 +98,9 @@ class _HomePageState extends State<HomePage> {
                                       color: Colors.white,
                                     )),
                                 const Padding(
-                                    padding: EdgeInsets.only(left: 10))
+                                    padding: EdgeInsets.only(
+                                  left: 15,
+                                ))
                               ],
                             ),
                             SizedBox(
@@ -170,7 +166,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   Column(
                                     children: [
-                                      Text(controller.aluno?.nome ?? '',
+                                      Text(controller.aluno?.usuario ?? '',
                                           style: const TextStyle(
                                               color: Colors.white,
                                               fontSize: 15,
@@ -368,7 +364,7 @@ class _HomePageState extends State<HomePage> {
                                           fontSize: 13,
                                           fontWeight: FontWeight.w500),
                                     ),
-                                    Text("- 37",
+                                    Text("- ${_retornarPontosPerdidos()}",
                                         style: TextStyle(
                                             color: Colors.redAccent[700],
                                             fontSize: 45,
@@ -417,7 +413,7 @@ class _HomePageState extends State<HomePage> {
                                           fontSize: 13,
                                           fontWeight: FontWeight.w500),
                                     ),
-                                    Text("+ 180",
+                                    Text("+ ${_retornarPontosGanhos()}",
                                         style: TextStyle(
                                             color: Colors.greenAccent[700],
                                             fontSize: 45,
@@ -466,7 +462,7 @@ class _HomePageState extends State<HomePage> {
                       Flexible(
                           flex: 1,
                           child: Container(
-                              margin: EdgeInsets.only(left: 10),
+                              margin: const EdgeInsets.only(left: 10),
                               width: largura,
                               height: altura * 0.15,
                               color: Colors.white,
@@ -511,7 +507,7 @@ class _HomePageState extends State<HomePage> {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        insetPadding: EdgeInsets.all(25),
+                        insetPadding: const EdgeInsets.all(25),
                         contentPadding: EdgeInsets.zero,
                         content: GestureDetector(
                           onTap: () {
@@ -543,7 +539,7 @@ class _HomePageState extends State<HomePage> {
                                     Navigator.of(context).pop();
                                   },
                                   child: const Text("Acessar Evento")),
-                              Icon(
+                              const Icon(
                                 Icons.keyboard_double_arrow_right,
                                 color: Colors.deepPurpleAccent,
                               )
@@ -564,8 +560,8 @@ class _HomePageState extends State<HomePage> {
                         BoxShadow(
                             color: Colors.grey.withOpacity(0.5),
                             spreadRadius: 3,
-                            blurRadius: 3,
-                            offset: const Offset(0, 3))
+                            blurRadius: 6,
+                            offset: const Offset(3, 5))
                       ]),
                   child: ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(13)),
@@ -640,5 +636,29 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       controller.pathImage = newPath;
     });
+  }
+
+  String _retornarPontosGanhos() {
+    num pontosGanhos = 0;
+
+    for (var ponto in controller.pontos) {
+      if (ponto.tipo == "ganho") {
+        pontosGanhos += ponto.pontos;
+      }
+    }
+
+    return pontosGanhos.toString();
+  }
+
+  String _retornarPontosPerdidos() {
+    num pontosPerdidos = 0;
+
+    for (var ponto in controller.pontos) {
+      if (ponto.tipo == "perda") {
+        pontosPerdidos += ponto.pontos;
+      }
+    }
+
+    return pontosPerdidos.toString();
   }
 }

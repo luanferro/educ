@@ -482,8 +482,6 @@ class _CadastroPageState extends State<CadastroPage> {
     });
   }
 
-  validaTurma() {}
-
   exibirAlertDialog(String texto) {
     showDialog(
         context: context,

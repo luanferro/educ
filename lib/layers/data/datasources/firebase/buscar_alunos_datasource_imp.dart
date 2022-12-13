@@ -27,6 +27,8 @@ class BuscarAlunosDataSourceImp implements BuscarAlunosDataSource {
             ano: doc.get("ano"),
             turma: doc.get("turma"),
             usuario: doc.get("usuario"),
+            fotoPerfil: doc.get("fotoPerfil"),
+            senha: doc.get("senha"),
             pontos: doc.get("pontos"));
 
         listaAlunos.add(aluno);

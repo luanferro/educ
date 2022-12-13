@@ -59,6 +59,8 @@ class _StartPageState extends State<StartPage> {
                 pageViewController.jumpToPage(index);
                 if (index == 3) {
                   controller.buscarAlunos(turma: "");
+                } else if (index == 1) {
+                  controller.buscarPontos(controllerUsuario.usuario ?? '');
                 }
               },
               type: BottomNavigationBarType.fixed,

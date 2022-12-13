@@ -44,7 +44,6 @@ class BuscarAlunoDataSourceImp implements BuscarAlunoDataSource {
 
   Future<List<String>> carregarImagensEventos() async {
     try {
-      List<Reference> refs = [];
       List<String> arquivos = [];
 
       String ref1 = await storage.ref('eventos/evento1.jpeg').getDownloadURL();
