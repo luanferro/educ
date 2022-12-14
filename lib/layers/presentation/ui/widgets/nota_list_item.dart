@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 
 import '../../../domain/entities/nota_entity.dart';
@@ -50,6 +52,7 @@ class NotaListItem extends StatelessWidget {
               ),
             ),
             Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 const Text(
                   "Nota:",
@@ -59,7 +62,7 @@ class NotaListItem extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  nota.toDouble().toString(),
+                  formataNota(nota).toString(),
                   style: TextStyle(
                       fontSize: 30,
                       color: corNota(nota),
@@ -75,11 +78,19 @@ class NotaListItem extends StatelessWidget {
 
   Color corNota(num nota) {
     if (nota > 7) {
-      return Color.fromARGB(255, 3, 145, 8);
+      return const Color.fromARGB(255, 3, 145, 8);
     } else if (nota < 7 && nota > 4) {
-      return Color.fromARGB(255, 229, 225, 4);
+      return const Color.fromARGB(255, 229, 225, 4);
     } else {
-      return Color.fromARGB(255, 255, 9, 9);
+      return const Color.fromARGB(255, 255, 9, 9);
+    }
+  }
+
+  formataNota(num nota) {
+    if (nota == 10 || nota == 0) {
+      return nota;
+    } else {
+      return nota.toDouble();
     }
   }
 }

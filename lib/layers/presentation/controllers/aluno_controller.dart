@@ -1,3 +1,8 @@
+import 'package:educ/layers/data/datasources/firebase/buscar_aluno_datasource_imp.dart';
+import 'package:educ/layers/data/datasources/firebase/buscar_pontos_datasource_imp.dart';
+import 'package:educ/layers/domain/entities/ponto_entity.dart';
+import 'package:educ/layers/domain/usecases/buscar_alunos/buscar_alunos_usecase.dart';
+import 'package:educ/layers/domain/usecases/buscar_foto_perfil/buscar_foto_perfil_usecase.dart';
 import 'package:educ/layers/domain/usecases/cadastrar_usuario/cadastrar_usuario_usecase.dart';
 import 'package:either_dart/either.dart';
 import 'package:educ/layers/domain/entities/aluno_entity.dart';
@@ -6,21 +11,44 @@ import 'package:educ/layers/domain/usecases/cadastrar_aluno/cadastrar_aluno_usec
 
 class AlunoController {
   final BuscarAlunoUseCase _buscarAlunoUseCase;
+  final BuscarAlunosUseCase _buscarAlunosUseCase;
   final CadastrarAlunoUseCase _cadastrarAlunoUseCase;
   final CadastrarUsuarioUseCase _cadastrarUsuarioUseCase;
+  final BuscarFotoPerfilUseCase _buscarFotoPerfilUseCase;
 
-  AlunoController(this._buscarAlunoUseCase, this._cadastrarAlunoUseCase,
-      this._cadastrarUsuarioUseCase);
+  AlunoController(
+      this._buscarAlunoUseCase,
+      this._cadastrarAlunoUseCase,
+      this._cadastrarUsuarioUseCase,
+      this._buscarAlunosUseCase,
+      this._buscarFotoPerfilUseCase);
 
   Either<Exception, AlunoEntity>? retorno;
+  Either<Exception, List<AlunoEntity>>? retornoAlunos;
+  Either<Exception, List<PontoEntity>>? retornoPontos;
   AlunoEntity? aluno;
+  List<AlunoEntity> alunos = [];
   Either<Exception, bool>? retornoUsuario;
   Exception? erro;
+  String? pathImage;
+  List<String> eventos = [];
+  List<PontoEntity> pontos = [];
 
   buscarAlunoUseCase(String usuario) async {
     retorno = await _buscarAlunoUseCase.buscarAluno(usuario);
     if (retorno!.isRight) {
       aluno = retorno!.right;
+    }
+  }
+
+  buscarAlunos({required String turma}) async {
+    alunos.clear();
+    retornoAlunos = await _buscarAlunosUseCase.buscarAlunos(turma: turma);
+    if (retornoAlunos!.isRight) {
+      for (var aluno in retornoAlunos!.right) {
+        alunos.add(aluno);
+      }
+      return alunos;
     }
   }
 
@@ -32,6 +60,27 @@ class AlunoController {
       _cadastrarAlunoUseCase.cadastrarAluno(alunoEntity);
     } else {
       erro = retornoUsuario!.left;
+    }
+  }
+
+  buscarImagemStorage(String nomeImagem) async {
+    pathImage = await _buscarFotoPerfilUseCase.buscarImagemPeril(nomeImagem);
+    return pathImage;
+  }
+
+  buscarEventos() async {
+    eventos = await BuscarAlunoDataSourceImp().carregarImagensEventos();
+  }
+
+  buscarPontos(String usuario) async {
+    pontos.clear();
+    retornoPontos =
+        await BuscarPontosDataSourceImp().buscarPontosGanhos(usuario);
+    if (retornoPontos!.isRight) {
+      for (var ponto in retornoPontos!.right) {
+        pontos.add(ponto);
+      }
+      return pontos;
     }
   }
 }

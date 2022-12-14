@@ -3,7 +3,6 @@ import 'package:educ/layers/presentation/ui/pages/home_page.dart';
 import 'package:educ/layers/presentation/ui/pages/perfil_page.dart';
 import 'package:educ/layers/presentation/ui/pages/ranking_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../controllers/aluno_controller.dart';
@@ -26,8 +25,8 @@ class _StartPageState extends State<StartPage> {
 
   @override
   void initState() {
-    controllerNota.buscarNotasUseCase(controllerUsuario.usuario ?? '');
     super.initState();
+    controllerNota.buscarNotasUseCase(controllerUsuario.usuario ?? '');
   }
 
   @override
@@ -58,6 +57,11 @@ class _StartPageState extends State<StartPage> {
               currentIndex: pageViewController.page?.round() ?? 2,
               onTap: (index) {
                 pageViewController.jumpToPage(index);
+                if (index == 3) {
+                  controller.buscarAlunos(turma: "");
+                } else if (index == 1) {
+                  controller.buscarPontos(controllerUsuario.usuario ?? '');
+                }
               },
               type: BottomNavigationBarType.fixed,
               selectedItemColor: Colors.deepPurpleAccent,
