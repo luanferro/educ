@@ -242,8 +242,8 @@ class _PerfilPageState extends State<PerfilPage> {
                                 ],
                               ),
                             ),
-                            const SizedBox(
-                              height: 20,
+                            SizedBox(
+                              height: altura * 0.04,
                             ),
                             PieChart(
                               dataMap: dataMap,
@@ -275,8 +275,10 @@ class _PerfilPageState extends State<PerfilPage> {
                             )
                           ],
                         ),
-                        Container(
-                          margin: const EdgeInsets.only(top: 35),
+                        SizedBox(
+                          height: altura * 0.08,
+                        ),
+                        SizedBox(
                           height: altura * 0.06,
                           width: largura * 0.45,
                           child: ElevatedButton(
@@ -317,7 +319,7 @@ class _PerfilPageState extends State<PerfilPage> {
             ],
           ),
           Container(
-            margin: EdgeInsets.only(top: altura * 0.14),
+            margin: EdgeInsets.only(top: altura * 0.16),
             alignment: Alignment.topCenter,
             child: ElevatedButton(
               // ignore: sort_child_properties_last
@@ -387,9 +389,11 @@ class _PerfilPageState extends State<PerfilPage> {
         const Duration(seconds: 0),
         () =>
             controller.buscarImagemStorage(controller.aluno?.fotoPerfil ?? ''));
-    setState(() {
-      controller.pathImage = newPath;
-    });
+    if (mounted) {
+      setState(() {
+        controller.pathImage = newPath;
+      });
+    }
   }
 
   exibirLista(BuildContext context) {

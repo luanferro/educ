@@ -633,9 +633,12 @@ class _HomePageState extends State<HomePage> {
         const Duration(seconds: 0),
         () =>
             controller.buscarImagemStorage(controller.aluno?.fotoPerfil ?? ''));
-    setState(() {
-      controller.pathImage = newPath;
-    });
+
+    if (mounted) {
+      setState(() {
+        controller.pathImage = newPath;
+      });
+    }
   }
 
   String _retornarPontosGanhos() {

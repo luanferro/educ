@@ -33,7 +33,7 @@ class BuscarAlunoDataSourceImp implements BuscarAlunoDataSource {
   @override
   Future<String> carregarImagemPerfil(String imagemName) async {
     try {
-      Reference ref = storage.ref('images/$imagemName');
+      Reference ref = await storage.ref('images/$imagemName');
       String linkImage = await ref.getDownloadURL();
 
       return linkImage;

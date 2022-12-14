@@ -30,6 +30,49 @@
             {
               "client_id": "569941663703-f0b4tj4pkf6ott0hn801q6k7j7irkatv.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "569941663703-pna7b1pp6sr6er2onqlcol01aj7edkm1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.luanferro.educ"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:569941663703:android:54dd4eb654330f9dc67592",
+        "android_client_info": {
+          "package_name": "com.example.educ_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "569941663703-f0b4tj4pkf6ott0hn801q6k7j7irkatv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDL4D_YSgDtO-sc_mMA2nAGpJ8qgiuDDhw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "569941663703-f0b4tj4pkf6ott0hn801q6k7j7irkatv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "569941663703-pna7b1pp6sr6er2onqlcol01aj7edkm1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.luanferro.educ"
+              }
             }
           ]
         }
