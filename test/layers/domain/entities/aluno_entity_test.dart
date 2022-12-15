@@ -11,13 +11,17 @@ main() {
         ano: "9",
         turma: "19BM",
         usuario: "luanferro",
-        senha: "luan2204");
+        senha: "luan2204",
+        fotoPerfil: "linkfoto",
+        pontos: 2000);
 
     expect(alunoEntity.nome, "Luan");
     expect(alunoEntity.sexo, "masculino");
-    expect(alunoEntity.dataNascimento, DateTime(1996, 04, 22));
+    expect(alunoEntity.dataNascimento, "22-04-1996");
     expect(alunoEntity.matricula, 1234567);
-    expect(alunoEntity.ano, 9);
+    expect(alunoEntity.ano, "9");
     expect(alunoEntity.turma, "19BM");
+    expect(alunoEntity.fotoPerfil, "linkfoto");
+    expect(alunoEntity.pontos, 2000);
   });
 }

@@ -57,7 +57,7 @@ class _RankingPageState extends State<RankingPage> {
         backgroundColor: Colors.deepPurpleAccent,
         body: Stack(children: <Widget>[
           Container(
-            height: altura / 1.4,
+            height: altura / 1.5,
             width: largura,
             color: Colors.transparent,
             child: Container(

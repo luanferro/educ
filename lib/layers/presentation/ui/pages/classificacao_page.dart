@@ -285,10 +285,9 @@ class _ClassificacaoPageState extends State<ClassificacaoPage> {
       newList = await Future.delayed(
           const Duration(seconds: 0), () => controller.buscarAlunos(turma: ""));
     }
-    (mounted) {
-      setState(() {
-        controller.alunos = newList;
-      });
-    };
+
+    setState(() {
+      controller.alunos = newList;
+    });
   }
 }
