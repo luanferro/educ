@@ -276,7 +276,7 @@ class _PerfilPageState extends State<PerfilPage> {
                           ],
                         ),
                         SizedBox(
-                          height: altura * 0.08,
+                          height: altura * 0.04,
                         ),
                         SizedBox(
                           height: altura * 0.06,
